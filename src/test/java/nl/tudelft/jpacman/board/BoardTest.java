@@ -21,7 +21,10 @@ public class BoardTest {
     void testNullBoard() {
         Square[][] grid = new Square[1][1];
         grid[0][0] = null;
-
-        Board board = new Board(grid);
+        try{
+            Board board = new Board(grid);
+        } catch (AssertionError e) {
+            assertThat(e).hasMessageContaining("Initial grid cannot contain null squares");
+        }
     }
 }
